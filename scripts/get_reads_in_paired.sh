@@ -28,8 +28,8 @@ if [ -e $R1 ] && [ -e $R2 ]; then
    commonIDs=$R1\.com
    comm -12 <( sort $R1ids ) <( sort $R2ids) > $commonIDs
    # extracting paired from R1 and R2
-   grep -f $commonIDs -A 3 $R1 > $paired1
-   grep -f $commonIDs -A 3 $R2 > $paired2
+   grep -f $commonIDs --no-group-separator -A 3 $R1 > $paired1
+   grep -f $commonIDs --no-group-separator -A 3 $R2 > $paired2
    # cleaning tmp files:
    rm $R1ids $R2ids $commonIDs
    exit 0

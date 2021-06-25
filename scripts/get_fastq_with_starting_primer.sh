@@ -29,12 +29,12 @@ fi
 
 if [ ! -e $outFile ] ; then
    echo creating: $outFile
-   grep -i "^$primer" -A 2 -B 1 $fastq > $outFile
+   grep -i "^$primer" --no-group-separator -A 2 -B 1 $fastq > $outFile
    exit 0;
 fi
 if [ -e $outFile ] && [ ! -z ${force+x} ]; then
    echo $outFile will be overwritten
-   grep -i "^$primer" -A 2 -B 1 $fastq > $outFile
+   grep -i "^$primer" --no-group-separator -A 2 -B 1 $fastq > $outFile
    exit 0;
 else
    echo "output : $outFile already there! used the force (-f) to overwrite it!"
